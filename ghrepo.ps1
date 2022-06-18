@@ -1,10 +1,18 @@
+$examplespath = $PSScriptRoot + '\examples'
+Write-Host $examplespath
+
+
+
 #get the repo name
 if ($args.Length -eq 0) {
-    Write-Host "No repo name specified" -ForegroundColor Red
-    exit 1
+    [string]$scriptPath = (Get-Location);
+    $repo_name=$scriptPath.split("\\")[-1]
+    Write-Host $repo_name
+} else {
+    $repo_name=$args[0];
 }
 
-$repo_name=$args[0];
+
 
 # initialize a git repo
 
